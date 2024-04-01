@@ -12,7 +12,7 @@ const Profile = () => {
         className="rounded-full bg-zinc-600 text-zinc-200 p-2"
       />
       <div className="w-full p-3">
-        <p className="text-3xl">Todo List</p>
+        <p className="text-3xl">Todo List 1</p>
         <ProfileDate />
       </div>
     </div>
