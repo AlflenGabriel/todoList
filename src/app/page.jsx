@@ -34,13 +34,13 @@ export default function page() {
 
   return (
     <div className="flex justify-content-center pt-40">
-      <div className="max-w-sm w-full shadow-lg bg-zinc-600 p-8 rounded-md opacity-70 mx-auto">
-        <div className="flex justify-content-center  cursor-default bg-zinc-200 rounded-2xl px-4 py-1  hover:scale-110 transition-all">
+      <div className="max-w-sm w-full shadow-lg bg-customprimary p-8 rounded-md opacity-70 mx-auto">
+        <div className="flex justify-content-center  cursor-default bg-custommiddle rounded-2xl px-4 py-1  hover:scale-110 transition-all">
           <Profile />
         </div>
         <div className="relative mt-10">
           <div className="absolute inset-y-0 left-2 flex items-center pl-3 pointer-events-none">
-            <Plus size={16} className="text-zinc-200" />
+            <Plus size={16} className="text-custommidle" />
           </div>
           <input
             type="text"
@@ -48,8 +48,8 @@ export default function page() {
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             onKeyUp={(e) => handleKeyUp(e.key)}
-            className="block w-full pl-10 p-2 border-4 rounded-full bg-zinc-600 text-zinc-200"
-            placeholder="New Todo Item"
+            className="block w-full pl-10 p-2 border-4 border-custommiddle rounded-full bg-customprimary focus:outline-none"
+            placeholder="To do... (Press Enter to Confirm)"
           />
         </div>
 
@@ -58,7 +58,7 @@ export default function page() {
             return (
               <li
                 key={item.id}
-                className="w-full border-2 rounded-xl mt-2 hover:border-zinc-400"
+                className="w-full border-2 rounded-xl mt-2 border-custommiddle hover:border-customsecondary transition-all"
               >
                 <input
                   id={index}
@@ -68,14 +68,11 @@ export default function page() {
                 <button
                   id={index}
                   onClick={() => handleDelete(index)}
-                  className="float-right w-7 h-7 m-2.5 rounded-2xl bg-red-700 text-zinc-600 shadow-md hover:bg-red-500 hover:scale-105 "
+                  className="float-right w-7 h-7 m-2.5 rounded-2xl bg-red-700 text-customprimary shadow-md hover:bg-red-500 hover:scale-105 "
                 >
                   x
                 </button>
-                <label
-                  htmlFor={index}
-                  className="block w-full p-3 text-zinc-200"
-                >
+                <label htmlFor={index} className="block w-full p-3">
                   {item.content}
                 </label>
               </li>
