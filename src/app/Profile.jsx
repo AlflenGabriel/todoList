@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { ListChecks } from "@phosphor-icons/react";
-import RelogioTempoReal from "./ProfileDate";
 import ProfileDate from "./ProfileDate";
 
 const Profile = () => {
