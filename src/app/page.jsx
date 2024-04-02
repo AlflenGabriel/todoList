@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import { useState } from "react";
 import { Plus } from "@phosphor-icons/react";
 import { Reorder } from "framer-motion";
+import ToggleButton from "./ToggleButton";
 
 export default function page() {
   const [todo, setTodo] = useState([]);
@@ -30,13 +31,15 @@ export default function page() {
   };
 
   const handleDelete = (id) => {
-    if (id > -1) setTodo(todo.slice(0, id).concat(todo.slice(id + 1)));
+    if (id > -1) {
+      setTodo(todo.slice(0, id).concat(todo.slice(id + 1)));
+    }
   };
 
   return (
-    <div className="flex justify-content-center pt-40">
-      <div className="max-w-sm w-full shadow-lg bg-customprimary p-8 rounded-md opacity-70 mx-auto">
-        <div className="flex justify-content-center  cursor-default bg-custommiddle rounded-2xl px-4 py-1  hover:scale-110 transition-all hover:bg-customsecondary duration-300">
+    <div className="flex content-center pt-40">
+      <div className="max-w-xl w-full shadow-lg bg-customprimary p-8 rounded-md opacity-80 mx-auto">
+        <div className="flex content-center cursor-default bg-custommiddle rounded-2xl px-4 py-1  hover:scale-105 transition-all hover:bg-customsecondary duration-300">
           <Profile />
         </div>
         <div className="flex mx-auto items-center justify-center gap-4 mt-10">
@@ -59,30 +62,27 @@ export default function page() {
           </div>
         </div>
 
-        <ul className="block w-full pt-6">
+        <ul className="pt-6 overflow-y-hidden">
           <Reorder.Group values={todo} onReorder={setTodo}>
             {todo?.map((item, index) => {
               return (
                 <Reorder.Item value={item} key={item.id}>
                   <li
                     key={item.id}
-                    className="w-full border-2 rounded-xl mt-2 border-custommiddle hover:border-customsecondary transition-all"
+                    className="flex items-center border-2 rounded-xl mt-2 p-4 border-custommiddle hover:border-customsecondary transition-all bg-customprimary relative"
                   >
-                    <input
-                      id={index}
-                      type="checkbox"
-                      className="float-left block w-6 h-6 m-3"
-                    />
-                    <button
-                      id={index}
-                      onClick={() => handleDelete(index)}
-                      className="float-right w-7 h-7 m-2.5 rounded-2xl bg-red-700 text-customprimary shadow-md hover:bg-red-500 hover:scale-105 "
-                    >
-                      x
-                    </button>
-                    <label htmlFor={index} className="block w-full p-3">
-                      {item.content}
-                    </label>
+                    <ToggleButton />
+                    <div>
+                      <label className="p-3">{item.content}</label>
+
+                      <button
+                        id={index}
+                        onClick={() => handleDelete(index)}
+                        className="w-7 h-7 rounded-xl bg-red-700 text-customprimary shadow-md hover:bg-red-500 hover:scale-105 absolute right-2 transition-all duration-300"
+                      >
+                        x
+                      </button>
+                    </div>
                   </li>
                 </Reorder.Item>
               );
