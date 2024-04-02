@@ -3,6 +3,7 @@ import React from "react";
 import Profile from "./Profile";
 import { useState } from "react";
 import { Plus } from "@phosphor-icons/react";
+import { Reorder } from "framer-motion";
 
 export default function page() {
   const [todo, setTodo] = useState([]);
@@ -59,30 +60,34 @@ export default function page() {
         </div>
 
         <ul className="block w-full pt-6">
-          {todo?.map((item, index) => {
-            return (
-              <li
-                key={item.id}
-                className="w-full border-2 rounded-xl mt-2 border-custommiddle hover:border-customsecondary transition-all"
-              >
-                <input
-                  id={index}
-                  type="checkbox"
-                  className="float-left block w-6 h-6 m-3"
-                />
-                <button
-                  id={index}
-                  onClick={() => handleDelete(index)}
-                  className="float-right w-7 h-7 m-2.5 rounded-2xl bg-red-700 text-customprimary shadow-md hover:bg-red-500 hover:scale-105 "
-                >
-                  x
-                </button>
-                <label htmlFor={index} className="block w-full p-3">
-                  {item.content}
-                </label>
-              </li>
-            );
-          })}
+          <Reorder.Group values={todo} onReorder={setTodo}>
+            {todo?.map((item, index) => {
+              return (
+                <Reorder.Item value={item} key={item.id}>
+                  <li
+                    key={item.id}
+                    className="w-full border-2 rounded-xl mt-2 border-custommiddle hover:border-customsecondary transition-all"
+                  >
+                    <input
+                      id={index}
+                      type="checkbox"
+                      className="float-left block w-6 h-6 m-3"
+                    />
+                    <button
+                      id={index}
+                      onClick={() => handleDelete(index)}
+                      className="float-right w-7 h-7 m-2.5 rounded-2xl bg-red-700 text-customprimary shadow-md hover:bg-red-500 hover:scale-105 "
+                    >
+                      x
+                    </button>
+                    <label htmlFor={index} className="block w-full p-3">
+                      {item.content}
+                    </label>
+                  </li>
+                </Reorder.Item>
+              );
+            })}
+          </Reorder.Group>
         </ul>
       </div>
     </div>
