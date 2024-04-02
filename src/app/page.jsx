@@ -35,22 +35,27 @@ export default function page() {
   return (
     <div className="flex justify-content-center pt-40">
       <div className="max-w-sm w-full shadow-lg bg-customprimary p-8 rounded-md opacity-70 mx-auto">
-        <div className="flex justify-content-center  cursor-default bg-custommiddle rounded-2xl px-4 py-1  hover:scale-110 transition-all">
+        <div className="flex justify-content-center  cursor-default bg-custommiddle rounded-2xl px-4 py-1  hover:scale-110 transition-all hover:bg-customsecondary duration-300">
           <Profile />
         </div>
-        <div className="relative mt-10">
-          <div className="absolute inset-y-0 left-2 flex items-center pl-3 pointer-events-none">
-            <Plus size={16} className="text-custommidle" />
-          </div>
+        <div className="flex mx-auto items-center justify-center gap-4 mt-10">
           <input
             type="text"
             id="newTodo"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             onKeyUp={(e) => handleKeyUp(e.key)}
-            className="block w-full pl-10 p-2 border-4 border-custommiddle rounded-full bg-customprimary focus:outline-none"
-            placeholder="To do... (Press Enter to Confirm)"
+            className="block w-full p-2 border-4 border-custommiddle rounded-full bg-customprimary focus:outline-none text-center hover:border-customsecondary transition-all duration-300 focus:border-customsecondary"
+            placeholder="To do..."
           />
+          <div className="">
+            <button
+              className="block p-2 border-4 border-custommiddle rounded-full  focus:outline-none  transition-all duration-300 hover:border-customsecondary"
+              onClick={() => handleKeyUp("Enter")}
+            >
+              <Plus size={16} className="text-custommidle" />
+            </button>
+          </div>
         </div>
 
         <ul className="block w-full pt-6">
