@@ -49,6 +49,7 @@ export default function page() {
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             onKeyUp={(e) => handleKeyUp(e.key)}
+            maxLength={40}
             className="block text-white w-full p-2 border-4 border-white/20 rounded-full bg-transparent focus:outline-none text-center hover:border-white/60 transition-all duration-300 focus:border-white/60 placeholder-white/60"
             placeholder="To do..."
           />
@@ -69,7 +70,7 @@ export default function page() {
                 <Reorder.Item value={item} key={item.id}>
                   <li
                     key={item.id}
-                    className="flex text-white items-center border-4 rounded-xl mt-2 p-4 border-white/20 hover:border-white/60 transition-all bg-transparent relative"
+                    className="flex text-white items-center border-4 rounded-xl mt-2 p-4 border-white/20 hover:border-white/60 transition-all bg-transparent relative hover:scale-95 duration-300"
                   >
                     <ToggleButton />
                     <div>
