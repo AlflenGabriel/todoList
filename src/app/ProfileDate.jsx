@@ -19,7 +19,7 @@ function ProfileDate() {
 
   return (
     <div>
-      <p>{dataFormatada}</p>
+      <p className="text-white drop-shadow-lg">{dataFormatada}</p>
     </div>
   );
 }
